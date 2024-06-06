@@ -1,0 +1,480 @@
+{
+  "author": "Unnamed",
+  "title": "Untitled Diagram",
+  "date": "2024-06-06T10:17:06.654Z",
+  "tables": [
+    {
+      "name": "author",
+      "comment": "",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": true,
+          "notNull": false,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 255,
+          "check": "",
+          "id": 1
+        },
+        {
+          "name": "bio",
+          "type": "TEXT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 2
+        },
+        {
+          "name": "birthdate",
+          "type": "DATE",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 3
+        },
+        {
+          "name": "nationality",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "",
+          "size": 255,
+          "check": "",
+          "id": 4
+        }
+      ],
+      "indices": [],
+      "id": 0,
+      "x": 1365.9536321718756,
+      "y": 361.6229537500001
+    },
+    {
+      "name": "genre",
+      "comment": "",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": true,
+          "notNull": false,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 255,
+          "check": "",
+          "id": 1
+        },
+        {
+          "name": "description",
+          "type": "TEXT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 2
+        }
+      ],
+      "indices": [],
+      "id": 1,
+      "x": 1018.1836847492191,
+      "y": 836.0838153132814
+    },
+    {
+      "name": "customer",
+      "comment": "",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": true,
+          "notNull": false,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 255,
+          "check": "",
+          "id": 1
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": true,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 255,
+          "check": "",
+          "id": 2
+        },
+        {
+          "name": "password",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 255,
+          "check": "",
+          "id": 3
+        },
+        {
+          "name": "address",
+          "type": "TEXT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 4
+        },
+        {
+          "name": "phoneNumber",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "",
+          "size": 50,
+          "check": "",
+          "id": 5
+        }
+      ],
+      "indices": [],
+      "id": 2,
+      "x": 641.0656427968752,
+      "y": 676.5454292968752
+    },
+    {
+      "name": "book",
+      "comment": "",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": true,
+          "notNull": false,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 255,
+          "check": "",
+          "id": 1
+        },
+        {
+          "name": "isbn",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 13,
+          "check": "",
+          "id": 2
+        },
+        {
+          "name": "publishDate",
+          "type": "DATE",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 3
+        },
+        {
+          "name": "price",
+          "type": "DECIMAL",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": "10,2",
+          "check": "",
+          "id": 4
+        },
+        {
+          "name": "description",
+          "type": "TEXT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 5
+        },
+        {
+          "name": "authorId",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 6
+        },
+        {
+          "name": "genreId",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 7
+        }
+      ],
+      "indices": [],
+      "id": 3,
+      "x": 1028.2980567821276,
+      "y": 420.46801117111073
+    },
+    {
+      "name": "order",
+      "comment": "",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": true,
+          "notNull": false,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "orderDate",
+          "type": "DATE",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 1
+        },
+        {
+          "name": "totalAmount",
+          "type": "DECIMAL",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": "10,2",
+          "check": "",
+          "id": 2
+        },
+        {
+          "name": "customerId",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 3
+        }
+      ],
+      "indices": [],
+      "id": 4,
+      "x": 306.1800930467923,
+      "y": 386.5976935331397
+    },
+    {
+      "name": "order_books_book",
+      "comment": "",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "orderId",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "bookId",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 1
+        }
+      ],
+      "indices": [],
+      "id": 5,
+      "x": 663.84248665625,
+      "y": 388.61933051562494
+    }
+  ],
+  "relationships": [
+    {
+      "name": "book_authorId_fk",
+      "startTableId": 3,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "startFieldId": 6,
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "cardinality": "Многие к одному",
+      "id": 0
+    },
+    {
+      "name": "book_genreId_fk",
+      "startTableId": 3,
+      "endTableId": 1,
+      "endFieldId": 0,
+      "startFieldId": 7,
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "cardinality": "Многие к одному",
+      "id": 1
+    },
+    {
+      "name": "order_customerId_fk",
+      "startTableId": 4,
+      "endTableId": 2,
+      "endFieldId": 0,
+      "startFieldId": 3,
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "cardinality": "Многие к одному",
+      "id": 2
+    },
+    {
+      "name": "order_books_book_orderId_fk",
+      "startTableId": 5,
+      "endTableId": 4,
+      "endFieldId": 0,
+      "startFieldId": 0,
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "cardinality": "Многие к одному",
+      "id": 3
+    },
+    {
+      "name": "order_books_book_bookId_fk",
+      "startTableId": 5,
+      "endTableId": 3,
+      "endFieldId": 0,
+      "startFieldId": 1,
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "cardinality": "Многие к одному",
+      "id": 4
+    }
+  ],
+  "notes": [],
+  "subjectAreas": [],
+  "types": []
+}
