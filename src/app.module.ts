@@ -6,18 +6,19 @@ import { Customer } from './entities/customer.entity';
 import { Genre } from './entities/genre.entity';
 import { Order } from './entities/order.entity';
 
-
 @Module({
-  imports: [TypeOrmModule.forRoot({
-    type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: 'postgres',
-    database: 'postgres',
-    entities: [Author, Book, Customer, Genre, Order],
-    synchronize: true,
-  }),],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'postgres',
+      database: 'postgres',
+      entities: [Author, Book, Customer, Genre, Order],
+      synchronize: true,
+    }),
+  ],
   controllers: [],
   providers: [],
 })
