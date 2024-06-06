@@ -19,6 +19,13 @@ export class TaskService {
   ) {}
 
   async populateDatabase() {
+    // Delete existing data
+    await this.orderRepository.delete({});
+    await this.bookRepository.delete({});
+    await this.authorRepository.delete({});
+    await this.genreRepository.delete({});
+    await this.customerRepository.delete({});
+
     const authors = [
       {
         name: 'Тарас Шевченко',
@@ -57,6 +64,7 @@ export class TaskService {
         nationality: 'American',
       },
     ];
+
     const genres = [
       { name: 'Поезія', description: 'Вірші та поетичні твори' },
       { name: 'Проза', description: 'Романи та новели' },
@@ -65,6 +73,7 @@ export class TaskService {
         description: 'Books about programming and software development',
       },
     ];
+
     const books = [
       {
         title: 'Кобзар',
@@ -122,6 +131,7 @@ export class TaskService {
         genreName: 'Programming',
       },
     ];
+
     const customers = [
       {
         name: 'Іван Петров',
@@ -171,6 +181,40 @@ export class TaskService {
     }
 
     await this.customerRepository.save(customers);
+
+    const orders = [
+      {
+        orderDate: '2023-01-01',
+        totalAmount: 300.0,
+        customerEmail: 'ivan.petrov@example.com',
+        bookIsbns: ['9789660359252', '9789660342118'],
+      },
+      {
+        orderDate: '2023-02-01',
+        totalAmount: 400.0,
+        customerEmail: 'maria.ivanova@example.com',
+        bookIsbns: ['9789660333339', '9781439102129'],
+      },
+      {
+        orderDate: '2023-03-01',
+        totalAmount: 550.0,
+        customerEmail: 'john.doe@example.com',
+        bookIsbns: ['9780062301253', '9780132350884'],
+      },
+    ];
+
+    for (const order of orders) {
+      const customer = await this.customerRepository.findOne({
+        where: { email: order.customerEmail },
+      });
+      const books = await this.bookRepository.findByIds(order.bookIsbns);
+      await this.orderRepository.save({
+        orderDate: order.orderDate,
+        totalAmount: order.totalAmount,
+        customer,
+        books,
+      });
+    }
   }
 
   async displayTablesData() {
@@ -192,31 +236,93 @@ export class TaskService {
   }
 
   async addRowsToTables() {
-    // Example: Add more rows to Author and Book tables
-    await this.authorRepository.save({
-      name: 'Іван Франко',
-      bio: 'Український письменник',
-      birthdate: '1856-08-27',
-      nationality: 'Ukrainian',
-    });
+    await this.authorRepository.save([
+      {
+        name: 'Михайло Коцюбинський',
+        bio: 'Український письменник, прозаїк',
+        birthdate: '1864-09-17',
+        nationality: 'Ukrainian',
+      },
+      {
+        name: 'Іван Нечуй-Левицький',
+        bio: 'Український письменник, драматург',
+        birthdate: '1838-12-15',
+        nationality: 'Ukrainian',
+      },
+    ]);
 
-    const author = await this.authorRepository.findOne({
-      where: { name: 'Іван Франко' },
-    });
-    const genre = await this.genreRepository.findOne({
-      where: { name: 'Проза' },
-    });
-    await this.bookRepository.save({
-      title: 'Захар Беркут',
-      isbn: '978-966-03-3333-9',
-      publishDate: '1883-10-01',
-      price: 200.0,
-      description: 'Історична повість',
-      author,
-      genre,
-    });
+    await this.genreRepository.save([
+      {
+        name: 'Історична проза',
+        description: 'Художні твори на історичні теми',
+      },
+      { name: 'Фантастика', description: 'Книги про фантастичні події' },
+    ]);
 
-    // Add more rows as needed...
+    const authors = await this.authorRepository.find();
+    const genres = await this.genreRepository.find();
+    await this.bookRepository.save([
+      {
+        title: 'Тіні забутих предків',
+        isbn: '978-966-03-1111-1',
+        publishDate: '1887-01-01',
+        price: 180.0,
+        description: 'Роман',
+        author: authors.find(
+          (author) => author.name === 'Михайло Коцюбинський',
+        ),
+        genre: genres.find((genre) => genre.name === 'Історична проза'),
+      },
+      {
+        title: 'Чорна рада',
+        isbn: '978-966-03-2222-2',
+        publishDate: '1861-02-02',
+        price: 150.0,
+        description: 'Історичний роман',
+        author: authors.find(
+          (author) => author.name === 'Іван Нечуй-Левицький',
+        ),
+        genre: genres.find((genre) => genre.name === 'Історична проза'),
+      },
+    ]);
+
+    await this.customerRepository.save([
+      {
+        name: 'Олександр Петров',
+        email: 'oleksandr.petrov@example.com',
+        password: 'password123',
+        address: 'Львів, Україна',
+        phoneNumber: '+380509876543',
+      },
+      {
+        name: 'Вікторія Іванова',
+        email: 'viktoria.ivanova@example.com',
+        password: 'password123',
+        address: 'Київ, Україна',
+        phoneNumber: '+380507654321',
+      },
+    ]);
+
+    const customers = await this.customerRepository.find();
+    const books = await this.bookRepository.find();
+    await this.orderRepository.save([
+      {
+        orderDate: '2023-04-01',
+        totalAmount: 330.0,
+        customer: customers.find(
+          (customer) => customer.name === 'Олександр Петров',
+        ),
+        books: [books.find((book) => book.title === 'Тіні забутих предків')],
+      },
+      {
+        orderDate: '2023-05-01',
+        totalAmount: 280.0,
+        customer: customers.find(
+          (customer) => customer.name === 'Вікторія Іванова',
+        ),
+        books: [books.find((book) => book.title === 'Чорна рада')],
+      },
+    ]);
   }
 
   async runQueries() {
@@ -241,5 +347,70 @@ export class TaskService {
       .select('SUM(book.price)', 'total')
       .getRawOne();
     console.table(totalBooksPrice);
+  }
+
+  async cascadeDelete() {
+    await this.populateDatabase();
+    await this.displayCustomersTable();
+    await this.displayOrdersTable();
+
+    const customerToDelete = await this.customerRepository.findOne({
+      where: { name: 'Іван Петров' },
+    });
+    await this.customerRepository.remove(customerToDelete);
+
+    await this.displayCustomersTable();
+    await this.displayOrdersTable();
+  }
+
+  async displayCustomersTable() {
+    const customers = await this.customerRepository.find();
+    console.table(customers);
+  }
+
+  async displayOrdersTable() {
+    const orders = await this.orderRepository.find({ relations: ['customer'] });
+    console.table(orders);
+  }
+
+  async updateEmails() {
+    await this.populateDatabase();
+
+    await this.displayCustomersTable();
+
+    const customersToUpdate = [
+      {
+        email: 'ivan.petrov@example.com',
+        newPassword: 'newPassword123',
+        newEmail: 'newemail1@example.com',
+      },
+      {
+        email: 'maria.ivanova@example.com',
+        newPassword: 'newPassword456',
+        newEmail: 'newemail2@example.com',
+      },
+    ];
+
+    for (const customerData of customersToUpdate) {
+      const customerToUpdate = await this.customerRepository.findOne({
+        where: {
+          email: customerData.email,
+        },
+      });
+      if (customerToUpdate) {
+        customerToUpdate.password = customerData.newPassword;
+        customerToUpdate.email = customerData.newEmail;
+        await this.customerRepository.save(customerToUpdate);
+      }
+    }
+
+    await this.displayCustomersTable();
+  }
+
+  async eager() {
+    const programmingGenre = await this.genreRepository.findOne({
+      where: { name: 'Programming' },
+    });
+    console.log(programmingGenre);
   }
 }

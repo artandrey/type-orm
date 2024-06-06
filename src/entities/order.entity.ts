@@ -20,7 +20,9 @@ export class Order {
   @Column({ type: 'decimal' })
   totalAmount: number;
 
-  @ManyToOne(() => Customer, (customer) => customer.orders)
+  @ManyToOne(() => Customer, (customer) => customer.orders, {
+    onDelete: 'CASCADE',
+  })
   customer: Customer;
 
   @ManyToMany(() => Book)

@@ -25,16 +25,15 @@ import { TaskService } from './task/task.service';
   controllers: [],
 })
 export class AppModule implements OnModuleInit {
-  private static readonly SHOULD_POPULATE = false;
+  private static readonly SHOULD_POPULATE = true;
 
   constructor(private readonly taskService: TaskService) {}
 
   async onModuleInit() {
-    if (AppModule.SHOULD_POPULATE) {
-      await this.taskService.populateDatabase();
-    }
-    await this.taskService.displayTablesData();
-    await this.taskService.addRowsToTables();
-    await this.taskService.runQueries();
+    await this.taskService.populateDatabase();
+    // await this.taskService.addRowsToTables();
+    // await this.taskService.displayTablesData();
+    // await this.taskService.cascadeDelete();
+    await this.taskService.eager();
   }
 }

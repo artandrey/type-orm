@@ -12,6 +12,9 @@ export class Genre {
   @Column({ nullable: true })
   description: string;
 
-  @OneToMany(() => Book, (book) => book.genre)
+  @OneToMany(() => Book, (book) => book.genre, {
+    onDelete: 'SET NULL',
+    eager: true,
+  })
   books: Book[];
 }
