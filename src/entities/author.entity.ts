@@ -18,6 +18,6 @@ export class Author {
   @Column({ nullable: true })
   nationality: string;
 
-  @OneToMany(() => Book, book => book.author)
+  @OneToMany(() => Book, (book) => book.author)
   books: Book[];
 }

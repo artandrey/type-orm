@@ -21,6 +21,6 @@ export class Customer {
   @Column({ nullable: true })
   phoneNumber: string;
 
-  @OneToMany(() => Order, order => order.customer)
+  @OneToMany(() => Order, (order) => order.customer)
   orders: Order[];
 }

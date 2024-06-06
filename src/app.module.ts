@@ -5,6 +5,7 @@ import { Book } from './entities/book.entity';
 import { Customer } from './entities/customer.entity';
 import { Genre } from './entities/genre.entity';
 import { Order } from './entities/order.entity';
+import { TaskService } from './task/task.service';
 
 @Module({
   imports: [
@@ -20,6 +21,6 @@ import { Order } from './entities/order.entity';
     }),
   ],
   controllers: [],
-  providers: [],
+  providers: [TaskService],
 })
 export class AppModule {}

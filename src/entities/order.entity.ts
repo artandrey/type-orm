@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
 import { Customer } from './customer.entity';
 import { Book } from './book.entity';
 
@@ -13,7 +20,7 @@ export class Order {
   @Column({ type: 'decimal' })
   totalAmount: number;
 
-  @ManyToOne(() => Customer, customer => customer.orders)
+  @ManyToOne(() => Customer, (customer) => customer.orders)
   customer: Customer;
 
   @ManyToMany(() => Book)
