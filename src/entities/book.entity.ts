@@ -5,7 +5,6 @@ import { Genre } from './genre.entity';
 @Entity()
 export class Book {
   @PrimaryColumn()
-  @Column()
   isbn: string;
 
   @Column()
