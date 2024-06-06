@@ -1,8 +1,3 @@
-import { Author } from './src/entities/author.entity';
-import { Book } from './src/entities/book.entity';
-import { Customer } from './src/entities/customer.entity';
-import { Genre } from './src/entities/genre.entity';
-import { Order } from './src/entities/order.entity';
 import { DataSource } from 'typeorm';
 
 const AppDataSource = new DataSource({
@@ -12,7 +7,7 @@ const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME || 'postgres',
   password: process.env.DB_PASSWORD || 'postgres',
   database: process.env.DB_DATABASE || 'postgres',
-  entities: [Author, Book, Genre, Order, Customer],
+  entities: ['./src/entities/*.ts'],
   migrations: ['./src/migrations/*.ts'],
   synchronize: false,
 });
