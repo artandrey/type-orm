@@ -1,7 +1,7 @@
 {
   "author": "Unnamed",
   "title": "Untitled Diagram",
-  "date": "2024-06-06T10:17:06.654Z",
+  "date": "2024-06-06T10:28:42.882Z",
   "tables": [
     {
       "name": "author",
@@ -217,14 +217,15 @@
       "color": "#175e7a",
       "fields": [
         {
-          "name": "id",
-          "type": "INT",
+          "name": "isbn",
+          "type": "VARCHAR",
           "comment": "",
           "unique": false,
-          "increment": true,
-          "notNull": false,
+          "increment": false,
+          "notNull": true,
           "primary": true,
           "default": "",
+          "size": 13,
           "check": "",
           "id": 0
         },
@@ -242,19 +243,6 @@
           "id": 1
         },
         {
-          "name": "isbn",
-          "type": "VARCHAR",
-          "comment": "",
-          "unique": false,
-          "increment": false,
-          "notNull": true,
-          "primary": false,
-          "default": "",
-          "size": 13,
-          "check": "",
-          "id": 2
-        },
-        {
           "name": "publishDate",
           "type": "DATE",
           "comment": "",
@@ -264,7 +252,7 @@
           "primary": false,
           "default": "",
           "check": "",
-          "id": 3
+          "id": 2
         },
         {
           "name": "price",
@@ -277,7 +265,7 @@
           "default": "",
           "size": "10,2",
           "check": "",
-          "id": 4
+          "id": 3
         },
         {
           "name": "description",
@@ -289,7 +277,7 @@
           "primary": false,
           "default": "",
           "check": "",
-          "id": 5
+          "id": 4
         },
         {
           "name": "authorId",
@@ -301,7 +289,7 @@
           "primary": false,
           "default": "",
           "check": "",
-          "id": 6
+          "id": 5
         },
         {
           "name": "genreId",
@@ -313,7 +301,7 @@
           "primary": false,
           "default": "",
           "check": "",
-          "id": 7
+          "id": 6
         }
       ],
       "indices": [],
@@ -400,7 +388,7 @@
         },
         {
           "name": "bookId",
-          "type": "INT",
+          "type": "VARCHAR",
           "comment": "",
           "unique": false,
           "increment": false,
@@ -408,7 +396,8 @@
           "primary": true,
           "default": "",
           "check": "",
-          "id": 1
+          "id": 1,
+          "size": 255
         }
       ],
       "indices": [],
@@ -423,7 +412,7 @@
       "startTableId": 3,
       "endTableId": 0,
       "endFieldId": 0,
-      "startFieldId": 6,
+      "startFieldId": 5,
       "updateConstraint": "No action",
       "deleteConstraint": "No action",
       "cardinality": "Многие к одному",
@@ -434,7 +423,7 @@
       "startTableId": 3,
       "endTableId": 1,
       "endFieldId": 0,
-      "startFieldId": 7,
+      "startFieldId": 6,
       "updateConstraint": "No action",
       "deleteConstraint": "No action",
       "cardinality": "Многие к одному",
@@ -463,14 +452,14 @@
       "id": 3
     },
     {
-      "name": "order_books_book_bookId_fk",
-      "startTableId": 5,
-      "endTableId": 3,
-      "endFieldId": 0,
-      "startFieldId": 1,
+      "startTableId": 3,
+      "startFieldId": 0,
+      "endTableId": 5,
+      "endFieldId": 1,
+      "cardinality": "Один ко многим",
       "updateConstraint": "No action",
       "deleteConstraint": "No action",
-      "cardinality": "Многие к одному",
+      "name": "book_isbn_fk",
       "id": 4
     }
   ],
