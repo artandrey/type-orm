@@ -1,25 +1,20 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Author } from './entities/author.entity';
+import { ProfileModule } from './profile/profile.module';
+import { Profile } from './entities/profile.entity';
 import { Book } from './entities/book.entity';
-import { Customer } from './entities/customer.entity';
-import { Genre } from './entities/genre.entity';
-import { Order } from './entities/order.entity';
+import { Achievement } from './entities/achievement.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'postgres',
-      database: 'postgres',
-      entities: [Author, Book, Customer, Genre, Order],
+      type: 'mongodb',
+      url: 'mongodb+srv://user:Mongo12345678db@cluster0.6vh98.mongodb.net/?retryWrites=true&w=majority&appName=typeorm',
       synchronize: true,
+      entities: [Profile, Book, Achievement],
     }),
+    ProfileModule,
   ],
   controllers: [],
-  providers: [],
 })
 export class AppModule {}
