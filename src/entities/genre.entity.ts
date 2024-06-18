@@ -14,7 +14,6 @@ export class Genre {
 
   @OneToMany(() => Book, (book) => book.genre, {
     onDelete: 'SET NULL',
-    eager: true,
   })
   books: Book[];
 }

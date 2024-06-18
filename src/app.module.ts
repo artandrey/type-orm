@@ -30,10 +30,10 @@ export class AppModule implements OnModuleInit {
   constructor(private readonly taskService: TaskService) {}
 
   async onModuleInit() {
-    await this.taskService.populateDatabase();
+    // await this.taskService.populateDatabase();
     // await this.taskService.addRowsToTables();
     // await this.taskService.displayTablesData();
     // await this.taskService.cascadeDelete();
-    await this.taskService.eager();
+    await this.taskService.explicit();
   }
 }

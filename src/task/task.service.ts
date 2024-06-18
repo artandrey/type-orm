@@ -413,4 +413,25 @@ export class TaskService {
     });
     console.log(programmingGenre);
   }
+
+  async lazy() {
+    const programmingGenre = await this.genreRepository.findOne({
+      where: { name: 'Programming' },
+    });
+    console.log('Before loading');
+    console.log(programmingGenre);
+
+    console.log('After loading');
+    await programmingGenre.books;
+    console.log(programmingGenre.books);
+  }
+
+  async explicit() {
+    const programmingGenre = await this.genreRepository.findOne({
+      where: { name: 'Programming' },
+      relations: ['books'],
+    });
+
+    console.log(programmingGenre);
+  }
 }
